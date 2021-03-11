@@ -25,7 +25,7 @@ pipeline {
                     
                 script {
                     GroovyShell shell = new GroovyShell()
-                    def utils = shell.parse(new File('$JENKINS_HOME\\workspace\\insta-pipeline@script\\git\\utils.groovy'))
+                    def utils = shell.parse(new File("$JENKINS_HOME\\workspace\\insta-pipeline@script\\git\\utils.groovy"))
                     def directory = "$JENKINS_HOME\\jobs\\insta-pipeline\\builds\\${env.BUILD_NUMBER}"
                     def archiveLocation = utils.findArchiveLocation(directory)
                     def index = archiveLocation.indexOf('/')
