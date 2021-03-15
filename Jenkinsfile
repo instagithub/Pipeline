@@ -62,8 +62,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                echo 'Jira Integrartion...'
+                echo 'Testing Start'
+                git branch:'master',
+                url:'ssh:instagithub@github.com:instagithub/Automation.git'
+                //bat 'mvn clean test'
             }
         }
         stage('Deploy to Production') {
