@@ -63,8 +63,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing Start'
+                bat 'mkdir -p Automation'
+                bat 'cd Automation'
                 git branch:'master',
                 url:'https://github.com/instagithub/Automation.git'
+                
                 //bat 'mvn clean test'
             }
         }
