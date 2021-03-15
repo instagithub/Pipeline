@@ -67,8 +67,9 @@ pipeline {
                 dir('Automation'){
                 git branch:'master',
                 url:'https://github.com/instagithub/Automation.git'
+                bat 'mvn clean test'
                 }
-                //bat 'mvn clean test'
+                
             }
         }
         stage('Deploy to Production') {
