@@ -64,10 +64,10 @@ pipeline {
             steps {
                 echo 'Testing Start'
                 bat 'mkdir -p Automation'
-                bat 'cd Automation'
+                dir('Automation'){
                 git branch:'master',
                 url:'https://github.com/instagithub/Automation.git'
-                
+                }
                 //bat 'mvn clean test'
             }
         }
