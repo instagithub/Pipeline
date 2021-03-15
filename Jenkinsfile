@@ -63,7 +63,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing Start'
-                bat 'mkdir -p Automation'
+                bat 'mkdir Automation'
                 dir('Automation'){
                 git branch:'master',
                 url:'https://github.com/instagithub/Automation.git'
