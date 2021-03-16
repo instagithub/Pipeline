@@ -63,11 +63,17 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing Start'
-                bat 'mkdir Automation'
-                dir('Automation'){
-                git branch:'master',
-                url:'https://github.com/instagithub/Automation.git'
-                bat 'mvn clean test'
+                try{
+                    bat 'mkdir Automation'
+                    dir('Automation'){
+                    git branch:'master',
+                    url:'https://github.com/instagithub/Automation.git'
+                    bat 'mvn clean test'
+                    }
+                    catch (e){
+                    echo "Stage failed, but continue build"
+                    echo "Caught: ${e}"    
+                     }
                 }
                 
             }
