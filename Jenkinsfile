@@ -72,6 +72,16 @@ pipeline {
                 
             }
         }
+        stage('Publish HTML RESULTS'){
+            steps{
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, 
+                             keepAll: false, 
+                             reportDir: '%JENKINS_HOME%\\workspace\\insta-pipeline\\Automation\\latestreports\\@TC-JobApplication\\cucumber-htmlreport', 
+                             reportFiles: 'index.html', 
+                             reportName: 'HTML Report', reportTitles: ''])
+            }
+         }
+        
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying....'
