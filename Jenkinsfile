@@ -62,9 +62,7 @@ pipeline {
     stage('Test') {
         steps{
                 echo 'Testing Start'
-                if[-d "Automation"]; then
-                   rmdir /s /q Automation
-
+                bat 'if[-d "Automation"]; then rmdir /s /q Automation'
                  bat 'mkdir Automation'
                   dir('Automation') {
                     git branch: 'master',
