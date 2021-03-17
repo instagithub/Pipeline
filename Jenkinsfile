@@ -60,8 +60,8 @@ pipeline {
       }
     }
     stage('Test') {
-      try {
-           steps{
+        steps{
+            try {
                  echo 'Testing Start'
                  bat 'mkdir Automation'
                   dir('Automation') {
