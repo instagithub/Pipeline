@@ -70,7 +70,7 @@ pipeline {
                     url:'https://github.com/instagithub/Automation.git'
                     bat 'mvn clean test'
                     }
-                    catch(Exception e){
+                    catch (e){
                     echo "Stage failed, but continue build"
                     echo "Caught: ${e}"    
                      }
