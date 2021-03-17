@@ -62,9 +62,15 @@ pipeline {
     stage('Test') {
         steps{
                 echo 'Testing Start'
-                bat 'if[-d "Automation"]; then rmdir /s /q Automation'
-                 bat 'mkdir Automation'
+
                   dir('Automation') {
+                  script{
+                  File autodir = new File("Automation")
+                  if(autodir.isExists()&&autodir.isDirectory())
+                       {
+                            autodir.delete
+                       }
+                   }
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
                     //bat 'mvn clean test'
