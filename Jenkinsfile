@@ -60,15 +60,15 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        echo 'Testing Start'
-        try {
-          bat 'mkdir Automation'
-          dir('Automation') {
-            git branch: 'master',
-              url: 'https://github.com/instagithub/Automation.git'
-            bat 'mvn clean test'
-          }
+      try {
+       steps {
+             echo 'Testing Start'
+             bat 'mkdir Automation'
+              dir('Automation') {
+                git branch: 'master',
+                  url: 'https://github.com/instagithub/Automation.git'
+                bat 'mvn clean test'
+              }
         } catch (e) {
           echo "Stage failed, but continue build"
           echo "Caught: ${e}"
@@ -83,12 +83,6 @@ pipeline {
           reportFiles: 'index.html',
           reportName: 'HTML Report', reportTitles: ''
         ])
-      }
-    }
-
-    stage('Deploy to Production') {
-      steps {
-        echo 'Deploying....'
       }
     }
   }
