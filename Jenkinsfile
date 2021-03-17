@@ -60,8 +60,8 @@ pipeline {
       }
     }
     stage('Test') {
-     steps{
-          try {
+      try {
+           steps{
                  echo 'Testing Start'
                  bat 'mkdir Automation'
                   dir('Automation') {
@@ -69,11 +69,12 @@ pipeline {
                       url: 'https://github.com/instagithub/Automation.git'
                     bat 'mvn clean test'
                   }
-            } catch (e) {
-              echo "Stage failed, but continue build"
-              echo "Caught: ${e}"
             }
           }
+          catch (e) {
+                        echo "Stage failed, but continue build"
+                        echo "Caught: ${e}"
+                     }
       }
 
     stage('Publish HTML RESULTS') {
