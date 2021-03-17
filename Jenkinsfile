@@ -59,9 +59,10 @@ pipeline {
         sleep 2
       }
     }
-    stage('Test') {
-        steps {
-            try {
+    node{
+        stage('Test') {
+
+                try {
                  echo 'Testing Start'
                  bat 'mkdir Automation'
                   dir('Automation') {
@@ -76,7 +77,8 @@ pipeline {
                         echo "Caught: ${e}"
                      }
                }
-        }
+
+       }
 
     stage('Publish HTML RESULTS') {
       steps {
