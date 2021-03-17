@@ -60,7 +60,7 @@ pipeline {
       }
     }
     stage('Test') {
-        node {
+        steps {
             try {
                  echo 'Testing Start'
                  bat 'mkdir Automation'
