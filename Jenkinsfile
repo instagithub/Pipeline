@@ -60,7 +60,7 @@ pipeline {
       }
     }
     stage('Test') {
-        steps{
+        node {
             try {
                  echo 'Testing Start'
                  bat 'mkdir Automation'
@@ -70,12 +70,13 @@ pipeline {
                     bat 'mvn clean test'
                   }
             }
-          }
+
           catch (e) {
                         echo "Stage failed, but continue build"
                         echo "Caught: ${e}"
                      }
-      }
+               }
+        }
 
     stage('Publish HTML RESULTS') {
       steps {
