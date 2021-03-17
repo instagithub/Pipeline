@@ -66,7 +66,7 @@ pipeline {
                   dir('Automation') {
                   script{
                   File autodir = new File("Automation")
-                  if(autodir.isExists()&&autodir.isDirectory())
+                  if(autodir.exists()&&autodir.isDirectory())
                        {
                             autodir.delete
                        }
