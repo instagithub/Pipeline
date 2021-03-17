@@ -59,11 +59,9 @@ pipeline {
         sleep 2
       }
     }
-    node{
-        stage('Test') {
-
-                try {
-                 echo 'Testing Start'
+    stage('Test') {
+        steps{
+                echo 'Testing Start'
                  bat 'mkdir Automation'
                   dir('Automation') {
                     git branch: 'master',
@@ -71,14 +69,9 @@ pipeline {
                     bat 'mvn clean test'
                   }
             }
+         }
 
-          catch (e) {
-                        echo "Stage failed, but continue build"
-                        echo "Caught: ${e}"
-                     }
-               }
 
-       }
 
     stage('Publish HTML RESULTS') {
       steps {
