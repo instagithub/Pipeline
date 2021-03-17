@@ -65,12 +65,9 @@ pipeline {
 
                   dir('Automation') {
                   script{
-                  File autodir = new File("Automation")
-                  if(autodir.exists()&&autodir.isDirectory())
-                       {
-                            autodir.delete
-                       }
-                   }
+                   GroovyShell shell = new GroovyShell()
+                   def utils = shell.parse(new File("$JENKINS_HOME\\workspace\\insta-pipeline\\utils.groovy"))
+                   utils.deleteDirectory("Automation")
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
                     //bat 'mvn clean test'

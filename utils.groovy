@@ -19,6 +19,15 @@ def findArchiveLocation(String directory) {
 	return archiveLocation.toString()
 }
 
+def deleteDirectory(String directory){
+	File autodir = new File("Automation")
+	if(autodir.exists()&&autodir.isDirectory())
+	{
+		autodir.delete
+	}
+}
+
+
 def updateProperties(String propertieslocation, String propertyToUpdate,String propertyValue){
 
 	Properties props = new Properties()
