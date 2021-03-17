@@ -59,15 +59,16 @@ pipeline {
         sleep 2
       }
     }
+
     stage('Test') {
         steps{
                 echo 'Testing Start'
-
-                  dir('Automation') {
                   script{
-                   GroovyShell shell = new GroovyShell()
-                   def utils = shell.parse(new File("$JENKINS_HOME\\workspace\\insta-pipeline\\utils.groovy"))
-                   utils.deleteDirectory("Automation")
+                    GroovyShell shell = new GroovyShell()
+                     def utils = shell.parse(new File("$JENKINS_HOME\\workspace\\insta-pipeline\\utils.groovy"))
+                     utils.deleteDirectory("Automation")
+                     }
+                  dir('Automation') {
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
                     //bat 'mvn clean test'
