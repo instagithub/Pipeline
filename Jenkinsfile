@@ -61,7 +61,6 @@ pipeline {
     }
     stage('Test') {
       try {
-       steps {
              echo 'Testing Start'
              bat 'mkdir Automation'
               dir('Automation') {
@@ -74,7 +73,7 @@ pipeline {
           echo "Caught: ${e}"
         }
       }
-    }
+
     stage('Publish HTML RESULTS') {
       steps {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false,
