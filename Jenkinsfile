@@ -71,7 +71,7 @@ pipeline {
                   dir('Automation') {
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
-                    //bat 'mvn clean test'
+                    bat 'mvn clean test'
                   }
             }
          }
@@ -82,7 +82,7 @@ pipeline {
       steps {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false,
           keepAll: false,
-          reportDir: '%JENKINS_HOME%\\workspace\\insta-pipeline\\Automation\\latestreports\\@TC-JobApplication\\cucumber-htmlreport',
+          reportDir: '\\Automation\\latestreports\\@TC-JobApplication\\cucumber-htmlreport',
           reportFiles: 'index.html',
           reportName: 'HTML Report', reportTitles: ''
         ])
