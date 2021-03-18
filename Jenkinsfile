@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+node{
 
   stages {
     stage('Export') {
@@ -60,7 +60,7 @@ pipeline {
       }
     }
 
-try{
+
     stage('Test') {
         steps{
                 echo 'Testing Start'
@@ -76,12 +76,6 @@ try{
                   }
             }
          }
-    }
-    catch (err){
-    echo "Caught: ${err}"
-    }
-
-
 
     stage('Publish HTML RESULTS') {
       steps {
@@ -94,4 +88,5 @@ try{
       }
     }
   }
+ }
 }
