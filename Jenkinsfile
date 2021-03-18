@@ -1,7 +1,7 @@
 pipeline {
 node{
 
-  stages {
+
     stage('Export') {
       steps {
         withAnt(installation: 'ant') {
@@ -87,6 +87,6 @@ node{
         ])
       }
     }
-  }
+
  }
 }
