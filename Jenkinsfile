@@ -1,7 +1,5 @@
 pipeline {
-node{
-
-
+stages{
     stage('Export') {
       steps {
         withAnt(installation: 'ant') {
@@ -72,7 +70,8 @@ node{
                   dir('Automation') {
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
-                    bat 'mvn clean test'
+                    catchError{bat 'mvn clean test'}
+
                   }
             }
          }
