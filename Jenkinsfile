@@ -60,6 +60,7 @@ pipeline {
       }
     }
 
+try{
     stage('Test') {
         steps{
                 echo 'Testing Start'
@@ -75,6 +76,10 @@ pipeline {
                   }
             }
          }
+    }
+    catch (err){
+    echo "Caught: ${err}"
+    }
 
 
 
