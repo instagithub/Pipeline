@@ -79,11 +79,11 @@ stages{
 
     stage('Publish HTML RESULTS') {
       steps {
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false,
-          keepAll: false,
+        publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false,
+          keepAll: true,
           reportDir: '\\Automation\\latestreports\\@TC-JobApplication\\cucumber-htmlreport',
           reportFiles: 'index.html',
-          reportName: 'HTML Report', reportTitles: ''
+          reportName: 'HTML_Report', reportTitles: 'HTML_Report'
         ])
       }
     }
