@@ -1,5 +1,6 @@
 pipeline {
 agent any
+def stageresult = "success"
 stages{
     stage('Export') {
       steps {
@@ -71,7 +72,10 @@ stages{
                   dir('Automation') {
                     git branch: 'master',
                       url: 'https://github.com/instagithub/Automation.git'
-                    catchError{bat 'mvn clean test'}
+                    catchError(buildResult:'UNSTABLE',stageResult:'FAILURE'){
+                    bat 'mvn clean test'
+                    stageresult = 'failure'
+                    }
 
                   }
             }
@@ -86,6 +90,14 @@ stages{
           reportName: 'HTML_Report', reportTitles: 'HTML_Report'
         ])
       }
+    }
+
+    stage('Deployment'){
+            if(stageresult == "success"){
+            echo 'Deploying to production'
+            }
+            else
+            {echo 'Deployment Aborted'}
     }
 
  }
