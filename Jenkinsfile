@@ -1,6 +1,8 @@
+def stageresult = 'success'
+
 pipeline {
 agent any
-def stageresult
+
 stages{
     stage('Export') {
       steps {
