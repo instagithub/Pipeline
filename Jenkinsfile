@@ -76,9 +76,10 @@ stages{
                       url: 'https://github.com/instagithub/Automation.git'
                     catchError(buildResult:'UNSTABLE',stageResult:'FAILURE'){
                     bat 'mvn clean test'
-                    stageresult = 'failure'
+                    script{
+                          stageresult = 'failure'
+                      }
                     }
-                   stageresult = 'success'
                   }
             }
          }
@@ -95,12 +96,15 @@ stages{
     }
 
     stage('Deployment'){
+     steps{
             if(stageresult == "success"){
-            echo 'Deploying to production'
-            }
-            else
-            {echo 'Deployment Aborted'}
-    }
+                 echo "Deploying to production"
+                 }
+                 else
+                 {echo "Deployment Aborted"}
+         }
+     }
+
 
  }
 }
