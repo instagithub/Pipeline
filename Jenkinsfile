@@ -97,11 +97,12 @@ stages{
 
     stage('Deployment'){
      steps{
-            if(stageresult == "success"){
-                 echo "Deploying to production"
-                 }
-                 else
-                 {echo "Deployment Aborted"}
+        script{
+            if(stageresult == "success")
+            echo "Deploying to production"
+            else
+            echo "Deployment Aborted"
+           }
          }
      }
 
