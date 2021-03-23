@@ -98,12 +98,10 @@ stages{
             if(env.stageResult == 'success')
             {
               echo "Deploying to production"
-              echo stageResult
             }
             else
             {
               echo "Deployment Aborted"
-              echo stageResult
             }
            }
          }
