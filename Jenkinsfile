@@ -1,6 +1,6 @@
 pipeline {
 agent any
-def stageresult = "success"
+def stageresult
 stages{
     stage('Export') {
       steps {
@@ -76,7 +76,7 @@ stages{
                     bat 'mvn clean test'
                     stageresult = 'failure'
                     }
-
+                   stageresult = 'success'
                   }
             }
          }
